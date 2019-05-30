@@ -1,6 +1,9 @@
 body {
     background-image: url(../assets/background.png);
+    background-size: auto;
 }
 #header {
-    background-color: aqua;
+    background-color: rgb(109,91,184);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
