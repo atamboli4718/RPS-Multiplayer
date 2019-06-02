@@ -1,33 +1,92 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
 
-    <title>RPS-Multiplayer</title>
-  </head>
-  <body>
-    <div id="header" class="jumbotron container-fluid text-center">
-        <h1 class="pb-3 pt-3">Rock Paper Scissors</h1>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <title>RPS-Multiplayer</title>
+</head>
+
+<body>
+
+  <div id="header" class="jumbotron container-fluid text-center">
+    <h1 class="pb-3 pt-3">Rock Paper Scissors</h1>
+  </div>
+
+  <div class="container container-fluid" id="startDiv">
+    <div class="row pt-3">
+      <div class="col-lg-4 pt-3" id="emptyTopLeft"></div>
+      <div class="col-lg-4 jumbotron container pt-3" id="enterNameBox">
+        <form>
+          <div class="form-group">
+            <label for="playerName">What is you're name?</label>
+            <input type="name" class="form-control" id="name" placeholder="You're name here">
+          </div>
+          <button type="submit" class="btn btn-secondary">Let's Play!</button>
+        </form>
+      </div>
+      <div class="col-lg-4 pt-3" id="emptyTopRight"></div>
     </div>
-    <div class="jumbotron container pt-3">
-        <div class="row">
-          <div class="col-lg-4" id="player1"></div>
-          <div class="col-lg-4" id="gameSpace"></div> 
-          <div class="col-lg-4" id="player2"></div> 
+  </div>
+
+  <div class="container container-fluid" id="playersDiv">
+    <div class="row">
+      <div class="col-lg-3 jumbotron container pt-3 mr-1" id="player1">
+        <div class="row font-weight-bold" id="player1name">player1Name</div>
+        <div class="row selections">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2 mx-auto" role="group" aria-label="buttons">
+                  <button type="button" class="btn btn-secondary rock">R</button>
+                  <button type="button" class="btn btn-secondary paper">P</button>
+                  <button type="button" class="btn btn-secondary scissors">S</button>
+                </div>
+            </div>
         </div>
-        <div class="row pt-3">
-            <div class="col-lg-4" id="emptyBottomLeft"></div>
-            <div class="col-lg-4" id="chatArea"></div> 
-            <div class="col-lg-4" id="emptyBottomRight"></div> 
-        </div>
+        <div class="row" id="player1wins">Wins</div>
+        <div class="row" id="player1losses">Losses</div>
+      </div>
+      <div class="col-lg-3 jumbotron container pt-3" id="gameSpace"></div>
+      <div class="col-lg-3 jumbotron container pt-3 ml-1" id="player2">
+          <div class="row font-weight-bold" id="player2name">player2Name</div>
+          <div class="row selections">
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group mr-2 mx-auto" role="group" aria-label="buttons">
+                    <button type="button" class="btn btn-secondary rock">R</button>
+                    <button type="button" class="btn btn-secondary paper">P</button>
+                    <button type="button" class="btn btn-secondary scissors">S</button>
+                  </div>
+              </div>
+          </div>
+          <div class="row" id="player2wins">Wins</div>
+          <div class="row" id="player2losses">Losses</div>
+      </div>
     </div>
-    
-    
-    
+
+    <div class="container container-fluid" id="chatDiv">
+      <div class="row pt-3">
+        <div class="col-lg-2 pt-3" id="emptyBottomLeft"></div>
+        <div class="col-lg-8 jumbotron container container-fluid pt-3" id="chatArea">
+          <form>
+              <div class="form-group">
+                <label class="font-weight-bold" for="playerName">Chat Room</label>
+              </div>
+              <div class="form-group">
+                  <textarea class="form-control" id="textArea" placeholder="Your message" rows="3"></textarea>
+                </div>
+              <button type="submit" class="btn btn-secondary" id="chatButton">Chat</button>
+            </form>
+        </div>
+        <div class="col-lg-2 pt-3" id="emptyBottomRight"></div>
+      </div>
+    </div>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
@@ -36,7 +95,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="assets/JS.js"></script>
-    
+
 
 </body>
+
 </html>
