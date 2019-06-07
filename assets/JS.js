@@ -16,7 +16,7 @@ Winner in center box
 */
 
 // Firebase objects and initilization
-var firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyAp-4rbip43yTXSQi6u5j24nxmWvzxUivw",
     authDomain: "rps-game-d993b.firebaseapp.com",
     databaseURL: "https://rps-game-d993b.firebaseio.com",
@@ -24,49 +24,81 @@ var firebaseConfig = {
     storageBucket: "rps-game-d993b.appspot.com",
     messagingSenderId: "994168819528",
     appId: "1:994168819528:web:1fde03218a2642cd"
-};
-
-firebase.initializeApp(firebaseConfig);
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 //reference to the database
-var db = firebase.firestore();
+var database = firebase.database();
 
-//global variables
-var player1data = db.collection("Player1");
-var player1name;
-var player1move;
-var player1wins;
-var player1losses;
+var nameSwitch = 0;
 
-var player2data = db.collection("player2");
-var player2name;
-var player2move;
-var player2wins;
-var player2losses;
+//keys
+player1Ref= database.ref('/player1');
+player2Ref= database.ref('/player2');
 
-
+database.ref('/player1').once('value',function(snapshot){
+    console.log(snapshot.val());
+})
 
 // puts player 1 name to the database
-$('#nameButton').on('click', function () {
-     if (player1data.doc('player1').player1name == "") {
+$('#letsPlay').on('click', function () {
+    event.preventDefault();
+    console.log('in click function');
+     if (!nameSwitch) { 
+        console.log('insetplayer1namefunction');
         player1name = $('#name').val();
-        db.collections.doc('player1').set({
+        nameSwitch = 1;
+        player1Ref.set({
             player1name: player1name,
-            player1move: empty,
-            player1wins: 0,
-            player1losses: 0,
-        });
+        }); 
         //puts player1 name onto the page
         $('#player1name').text(player1name);
-    } else {
-        playzer2name = $('#name').val();
-        db.collections.doc('player2').set({
+    //puts player2 name into the db
+    } else if (nameSwitch == 1) {
+        console.log('insetplayer2namefunction');
+        player2name = $('#name').val();
+        nameSwitch = 2;
+        player2Ref.set({
             player2name: player2name,
-            player2move: empty,
-            player2wins: 0,
-            player2losses: 0,
         });
         //puts player2 name onto the page
-        $('player2name').text(player2name);
+        $('#player2name').text(player2name);
+    }
+    //alerts that the game is full  
+    else {
+        alert('game is full, please wait');
     }
 })
+
+//variables for player moves and wins
+var player1move;
+var player2move;
+
+var player1wins=0;
+$('#player1wins').text()=player1wins;
+var player2wins=0;
+$('#player2wins').text()=player2wins;
+
+var player1losses=0;
+$('#player1losses').text()=player1losses;
+var player2losses=0;
+$('#player2losses').text()=player2losses;
+
+
+//logic for determining winner
+if ((player1move === "r") || (player1move === "p") || (player1move === "s")) {
+
+    if ((player1move === "r" && player2move === "s") ||
+      (player1move === "s" && player2move === "p") || 
+      (player1move === "p" && player2move === "r")) {
+      player1wins++;
+      player2losses++;
+    } else if (player1move === player2move) {
+      alert("you tied! play again");
+    } else {
+      player1losses++;
+      player2wins++;
+    }
+}
+
