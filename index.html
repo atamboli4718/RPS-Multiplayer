@@ -42,14 +42,16 @@
         <div class="row selections">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group mr-2 mx-auto" role="group" aria-label="buttons">
-                  <button type="button" class="btn btn-secondary rock">R</button>
-                  <button type="button" class="btn btn-secondary paper">P</button>
-                  <button type="button" class="btn btn-secondary scissors">S</button>
+                  <button type="button" class="btn btn-secondary rock" id="rock1">R</button>
+                  <button type="button" class="btn btn-secondary paper" id="paper1">P</button>
+                  <button type="button" class="btn btn-secondary scissors" id="scissors1">S</button>
                 </div>
             </div>
         </div>
-        <div class="row" id="player1wins">Wins</div>
-        <div class="row" id="player1losses">Losses</div>
+        <div class="row">Wins</div>
+        <div class="row" id="player1wins"></div>
+        <div class="row">Losses</div>
+        <div class="row" id="player1losses"></div>
       </div>
       <div class="col-lg-3 jumbotron container pt-3" id="gameSpace"></div>
       <div class="col-lg-3 jumbotron container pt-3 ml-1" id="player2">
@@ -58,14 +60,16 @@
           <div class="row selections">
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                   <div class="btn-group mr-2 mx-auto" role="group" aria-label="buttons">
-                    <button type="button" class="btn btn-secondary rock">R</button>
-                    <button type="button" class="btn btn-secondary paper">P</button>
-                    <button type="button" class="btn btn-secondary scissors">S</button>
+                    <button type="button" class="btn btn-secondary rock" id="rock2">R</button>
+                    <button type="button" class="btn btn-secondary paper" id="paper2">P</button>
+                    <button type="button" class="btn btn-secondary scissors" id="scissors2">S</button>
                   </div>
               </div>
           </div>
-          <div class="row" id="player2wins">Wins</div>
-          <div class="row" id="player2losses">Losses</div>
+          <div class="row">Wins</div>
+          <div class="row" id="player2wins"></div>
+          <div class="row">Losses</div>
+          <div class="row" id="player2losses"></div>
       </div>
     </div>
 
@@ -98,7 +102,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- js file -->
-    <script src="assets/JS.js"></script>
+    <script src="assets/logic.js"></script>
 
     
 

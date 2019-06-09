@@ -51,9 +51,11 @@ $('#letsPlay').on('click', function () {
         nameSwitch = 1;
         player1Ref.set({
             player1name: player1name,
+            player1wins: player1wins,
+            player1losses: player1losses,
         }); 
         //puts player1 name onto the page
-        $('#player1name').text(player1name);
+        $('#player1name').html(player1name);
     //puts player2 name into the db
     } else if (nameSwitch == 1) {
         console.log('insetplayer2namefunction');
@@ -61,14 +63,17 @@ $('#letsPlay').on('click', function () {
         nameSwitch = 2;
         player2Ref.set({
             player2name: player2name,
+            player2wins: player2wins,
+            player2losses: player2losses,
         });
         //puts player2 name onto the page
-        $('#player2name').text(player2name);
+        $('#player2name').html(player2name);
     }
     //alerts that the game is full  
     else {
         alert('game is full, please wait');
     }
+    $('#name').reset();
 })
 
 //variables for player moves and wins
@@ -76,15 +81,69 @@ var player1move;
 var player2move;
 
 var player1wins=0;
-$('#player1wins').text()=player1wins;
+$('#player1wins').text(player1wins);
 var player2wins=0;
-$('#player2wins').text()=player2wins;
+$('#player2wins').text(player2wins);
 
 var player1losses=0;
-$('#player1losses').text()=player1losses;
+$('#player1losses').text(player1losses);
 var player2losses=0;
-$('#player2losses').text()=player2losses;
+$('#player2losses').text(player2losses);
 
+//click functions for rps buttons
+$('#rock1').on('click', function() {
+  event.preventDefault();
+  player1move= 'r';
+  console.log(player1move);
+  database.ref('/player1').update({
+    player1move: player1move,
+  });
+})
+
+$('#paper1').on('click', function() {
+  event.preventDefault();
+  player1move= 'p';
+  console.log(player1move);
+  database.ref('/player1').update({
+    player1move: player1move,
+  });
+})
+
+$('#scissors1').on('click', function() {
+  event.preventDefault();
+  player1move= 's';
+  console.log(player1move);
+  database.ref('/player1').update({
+    player1move: player1move,
+  });
+})
+
+$('#rock2').on('click', function() {
+  event.preventDefault();
+  player2move= 'r';
+  console.log(player2move);
+  database.ref('/player1').update({
+    player2move: player2move,
+  });
+})
+
+$('#paper2').on('click', function() {
+  event.preventDefault();
+  player2move= 'p';
+  console.log(player2move);
+  database.ref('/player1').update({
+    player2move: player2move,
+  });
+})
+
+$('#scissors2').on('click', function() {
+  event.preventDefault();
+  player2move= 's';
+  console.log(player2move);
+  database.ref('/player1').update({
+    player2move: player2move,
+  });
+})
 
 //logic for determining winner
 if ((player1move === "r") || (player1move === "p") || (player1move === "s")) {
@@ -102,3 +161,4 @@ if ((player1move === "r") || (player1move === "p") || (player1move === "s")) {
     }
 }
 
+//logic for alert box
