@@ -34,11 +34,27 @@ var database = firebase.database();
 var nameSwitch = 0;
 
 //keys
-player1Ref = database.ref('/player1');
-player2Ref = database.ref('/player2');
+var player1Ref = database.ref('/player1');
+var player2Ref = database.ref('/player2');
 
-database.ref('/player1').once('value', function (snapshot) {
-  console.log(snapshot.val());
+var player1Loaded = false;
+var player2Loaded = false;
+
+player1Ref.on('value', function (snapshot) {
+  if(player1Loaded) {
+    console.log(snapshot.val());
+    $('#player1wins').text(snapshot.val().player1wins);
+    $('#player1losses').text(snapshot.val().player1losses);
+  }
+  player1Loaded = true;
+})
+
+player2Ref.on('value', function (snapshot) {
+  if(player2Loaded) {
+  $('#player2wins').text(snapshot.val().player2wins);
+  $('#player2losses').text(snapshot.val().player2losses);
+  }
+  player2Loaded = true;
 })
 
 // puts player 1 name to the database
@@ -75,7 +91,7 @@ $('#letsPlay').on('click', function () {
   else {
     alert('game is full, please wait');
   }
-  $('#name').reset();
+  $('#name').val('');
 })
 
 //variables for player moves and wins
@@ -155,19 +171,29 @@ $('#scissors2').on('click', function () {
 
 //function for determining winner
 function gamePlay() {
-  if ((player1move == "r") || (player1move == "p") || (player1move == "s")) {
+  if (
+    ((player1move == "r") || (player1move == "p") || (player1move == "s")) &&
+    ((player2move == "r") || (player2move == "p") || (player2move == "s"))
+    ) {
 
     if ((player1move == "r" && player2move == "s") ||
       (player1move == "s" && player2move == "p") ||
       (player1move == "p" && player2move == "r")) {
       player1wins++;
       player2losses++;
+      $('#gameSpace').text("player 1 wins! play again");
+      player1move = '-';
+      player2move = '-';
     } else if (player1move == player2move) {
       $('#gameSpace').text("you tied! play again");
-      
+      player1move = '-';
+      player2move = '-';
     } else {
       player1losses++;
       player2wins++;
+      $('#gameSpace').text("player 2 wins! play again");
+      player1move = '-';
+      player2move = '-';
     }  
   }
   score (); 
