@@ -181,17 +181,17 @@ function gamePlay() {
       (player1move == "p" && player2move == "r")) {
       player1wins++;
       player2losses++;
-      $('#gameSpace').text("player 1 wins! play again");
+      $('#gameSpace').text("Player 1 wins! Play again");
       player1move = '-';
       player2move = '-';
     } else if (player1move == player2move) {
-      $('#gameSpace').text("you tied! play again");
+      $('#gameSpace').text("You tied! Play again");
       player1move = '-';
       player2move = '-';
     } else {
       player1losses++;
       player2wins++;
-      $('#gameSpace').text("player 2 wins! play again");
+      $('#gameSpace').text("Player 2 wins! Play again");
       player1move = '-';
       player2move = '-';
     }  
