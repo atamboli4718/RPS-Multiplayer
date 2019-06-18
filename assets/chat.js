@@ -19,21 +19,3 @@ function chatContent() {
         $('#chatHistory').text(playerInfo+' says: '+ message);        
     })
 }
-    
-    
-
-
-
-
-    // console.log('in chatContent function')
-    // var messageDiv=$('<div>')
-    // var message=$('#textArea').val()
-    // messageDiv.addClass('my-5')
-    // messageDiv.text(message)
-    // var chatterDiv=$('<div>')
-    // var chatter
-    // chatterDiv.addClass('user_info')
-    // chatterDiv.text(chatter)
-    
-    // chatterDiv.appendTo('#chatHistory')
-    // chatterDiv.append(messageDiv)
