@@ -16,6 +16,7 @@ function chatContent() {
         message: message,       
     })
     chatRef.on('value',function(snapshot){
-        $('#chatHistory').text(playerInfo+' says: '+ message);        
+        $('#chatHistory').empty();
+        $('#chatHistory').append('<p class ="remove" >playerInfo'+' says: '+ message + '</p>'); 
     })
 }
