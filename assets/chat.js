@@ -6,12 +6,12 @@ $('#chatButton').on("click", function(){
 
 //function to write chat to DOM
 function chatContent() {
-    playerInfo = localStorage.getItem('player')
+    var playerInfo = localStorage.getItem('player')
     console.log(playerInfo)
-    playerInfo.on('value',function(snapshot){
-        console.log(snapshot.val())
-
-    })
+    var message = $("#textArea").val()
+    $('#chatHistory').prepend(playerInfo+message)
+    //$('#chatHistory').text(message);
+}
     
     
 
@@ -25,12 +25,8 @@ function chatContent() {
     // messageDiv.text(message)
     // var chatterDiv=$('<div>')
     // var chatter
-    // database.ref().on('child_added',function(snapshot){
-    // chatter=snapshot.val(player1name)
-    // })
     // chatterDiv.addClass('user_info')
     // chatterDiv.text(chatter)
     
     // chatterDiv.appendTo('#chatHistory')
     // chatterDiv.append(messageDiv)
-}

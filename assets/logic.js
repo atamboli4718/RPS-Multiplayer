@@ -73,7 +73,7 @@ $('#letsPlay').on('click', function () {
     //puts player1 name onto the page
     $('#player1name').html(player1name);
     $('#gameSpace').text('Wating on Player2 to join.');
-    localStorage.setItem('player','player1Ref');
+    localStorage.setItem('player',player1name);
     //puts player2 name into the db
   } else if (nameSwitch == 1) {
     console.log('insetplayer2namefunction');
@@ -87,7 +87,7 @@ $('#letsPlay').on('click', function () {
     //puts player2 name onto the page
     $('#player2name').html(player2name);
     $('#gameSpace').text('Make your move!');
-    localStorage.setItem('player','player2Ref');
+    localStorage.setItem('player',player2name);
   }
   //alerts that the game is full  
   else {
