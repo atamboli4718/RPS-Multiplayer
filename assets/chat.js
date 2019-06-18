@@ -1,3 +1,5 @@
+var chatRef = database.ref('/chatBox');
+
 //click function for chat button
 $('#chatButton').on("click", function(){
     event.preventDefault();
@@ -8,9 +10,14 @@ $('#chatButton').on("click", function(){
 function chatContent() {
     var playerInfo = localStorage.getItem('player')
     console.log(playerInfo)
-    var message = $("#textArea").val()
-    $('#chatHistory').prepend(playerInfo+message)
-    //$('#chatHistory').text(message);
+    var message = $("#textArea").val();
+    chatRef.set({
+        name: playerInfo,
+        message: message,       
+    })
+    chatRef.on('value',function(snapshot){
+        $('#chatHistory').text(playerInfo+' says: '+ message);        
+    })
 }
     
     
