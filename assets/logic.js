@@ -216,15 +216,3 @@ function score () {
     player2losses: player2losses,
   });
 }
-
-//checking for player moves
-// function winnerCheck (){
-//     database.ref().once('value',function(snapshot){
-//     console.log(snapshot.val());
-
-
-//   })
-
-// }
-
-// winnerCheck();
